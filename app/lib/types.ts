@@ -28,3 +28,8 @@ export interface AuthDataResponse {
   expiresAt: number;
   profile: ProfileData;
 }
+
+export interface AuthCredentials {
+  email: string;
+  password: string;
+}

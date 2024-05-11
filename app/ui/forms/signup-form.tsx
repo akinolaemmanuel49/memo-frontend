@@ -11,6 +11,7 @@ import { useFormStatus } from "react-dom";
 import { Button } from "@/app/ui/button";
 import { ArrowRightCircle } from "../icons";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignupForm() {
     const [formData, setFormData] = useState<FormData>({
@@ -189,18 +190,21 @@ export default function SignupForm() {
                     </div>
                 </div>
                 {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-                <SigninButton />
+                <SignupButton />
+            </div>
+            <div>
+                <p>Already have an account? <Link href="/signin" className="mt-4 text-blue-600 hover:text-blue-900 hover:outline-blue-900">Sign in</Link></p>
             </div>
         </form >
     );
 }
 
-function SigninButton() {
+function SignupButton() {
     const { pending } = useFormStatus();
 
     return (
         <Button className="mt-4 w-full" aria-disabled={pending}>
-            Sign in <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
+            Sign up <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
     )
 }
