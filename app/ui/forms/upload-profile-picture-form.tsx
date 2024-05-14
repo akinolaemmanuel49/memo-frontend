@@ -7,6 +7,7 @@ import { ArrowRightCircle } from '@/app/ui/icons';
 
 const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSuccess, onError }) => {
     const [file, setFile] = useState<File | null>(null);
+    const [pictureStatus, setPictureStatus] = useState<string>("Delete picture");
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const uploadedFile = e.target.files?.[0];
@@ -36,6 +37,20 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
             onSuccess();
         } catch (error) {
             onError('Failed to upload profile picture');
+        }
+    };
+
+    const handleDeletePicture = async () => {
+        try {
+            await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users/avatar`, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                },
+            });
+            setPictureStatus("Picture deleted");
+        } catch (error) {
+            console.error('Failed to delete profile picture:', error);
+            throw error; // Propagate the error to be caught by the onError function
         }
     };
 
@@ -91,7 +106,10 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
                         )}
                     </div>
                 </div>
-                <UploadProfilePictureButton />
+                <div className="flex flex-col w-full">
+                    <UploadProfilePictureButton />
+                    <DeleteProfilePictureButton onDeletePicture={handleDeletePicture} pictureStatus={pictureStatus} />
+                </div>
             </div>
         </form>
     );
@@ -105,6 +123,23 @@ function UploadProfilePictureButton() {
     return (
         <Button className="flex justify-center mt-4 w-full md:w-1/2" aria-disabled={pending}>
             Upload picture <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
+        </Button>
+    )
+}
+
+interface DeleteProfilePictureButtonProps {
+    onDeletePicture: () => void;
+    pictureStatus: string;
+}
+
+function DeleteProfilePictureButton({ onDeletePicture, pictureStatus }: DeleteProfilePictureButtonProps) {
+    const { pending } = useFormStatus();
+
+    return (
+        <Button className="flex justify-center mt-4 w-full md:w-1/2 bg-red-600"
+            aria-disabled={pending}
+            onClick={onDeletePicture}>
+            {pictureStatus}<ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
     )
 }
