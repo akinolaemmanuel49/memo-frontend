@@ -14,6 +14,17 @@ export interface ProfileData {
   updatedAt: string;
 }
 
+export interface ProfileFormData {
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  avatarURL: string;
+  avatarFile: File | null;
+  status: string;
+  about: string;
+}
+
 export interface CreateUserFormData {
   username: string;
   email: string;

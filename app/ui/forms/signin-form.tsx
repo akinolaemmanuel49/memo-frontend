@@ -53,7 +53,7 @@ export default function SigninForm() {
             localStorage.setItem("accessToken", response.accessToken);
             localStorage.setItem("refreshToken", response.refreshToken);
             console.log("Form submitted: ", response);
-            router.push("/home")
+            router.push("/home");
         } catch (error) {
             console.error("Signup failed: ", error);
         }
