@@ -19,10 +19,11 @@ export interface ProfileFormData {
   email: string;
   firstName: string;
   lastName: string;
-  avatarURL: string;
-  avatarFile: File | null;
-  status: string;
   about: string;
+}
+
+export interface ProfilePictureData {
+  avatarFile: File;
 }
 
 export interface CreateUserFormData {
@@ -43,4 +44,9 @@ export interface AuthDataResponse {
 export interface AuthCredentials {
   email: string;
   password: string;
+}
+
+export interface UploadProfilePictureProps {
+  onSuccess: () => void;
+  onError: (error: string) => void;
 }

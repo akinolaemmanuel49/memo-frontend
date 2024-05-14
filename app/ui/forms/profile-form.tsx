@@ -15,9 +15,6 @@ export default function ProfileForm() {
         email: "",
         firstName: "",
         lastName: "",
-        avatarURL: "", // This will store the URL of the avatar image
-        avatarFile: null, // This will store the uploaded avatar file
-        status: "",
         about: "",
     });
     const [profileData, setProfileData] = useState<ProfileData>();
@@ -38,7 +35,9 @@ export default function ProfileForm() {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
                 setProfileData(response.data);
-                setFormData(response.data)
+                if (profileData) {
+                    setFormData(profileData);
+                }
             } catch (error) {
                 setError("Failed to fetch user profile.");
                 console.error(error);
@@ -59,7 +58,7 @@ export default function ProfileForm() {
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
+        const { name, value, type } = e.target;
 
         setFormData({
             ...formData,
@@ -91,7 +90,7 @@ export default function ProfileForm() {
                 )
             ).data;
             console.log("Form submitted: ", response);
-            router.push("/profile");
+            router.push("/profile/update/avatar");
         } catch (error) {
             console.error("Profile update failed: ", error);
         }
