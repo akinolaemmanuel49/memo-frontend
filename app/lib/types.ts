@@ -60,7 +60,12 @@ export interface DeleteProfilePictureButtonProps {
   pictureStatus: string;
 }
 
-export interface PostTextMemoButtonProps {
+export interface PostMemoButtonProps {
   onPost: () => void;
   waitingStatus: boolean;
+}
+
+export interface ImageMemoForm {
+  caption: string;
+  memoFile: File | null;
 }

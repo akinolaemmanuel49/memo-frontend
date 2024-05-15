@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { TextMemoForm as FormData, PostTextMemoButtonProps } from "@/app/lib/types";
+import { TextMemoForm as FormData, PostMemoButtonProps } from "@/app/lib/types";
 import { Button } from "@/app/ui/button";
 
 export default function TextMemo() {
@@ -11,6 +11,7 @@ export default function TextMemo() {
     })
     const [error, setError] = useState<string | null>(null);
     const [waiting, setWaiting] = useState(false);
+    
     const router = useRouter();
 
     const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -62,7 +63,7 @@ export default function TextMemo() {
     )
 }
 
-function PostTextMemoButton({ onPost, waitingStatus }: PostTextMemoButtonProps) {
+function PostTextMemoButton({ onPost, waitingStatus }: PostMemoButtonProps) {
     return (
         <Button className="flex justify-center mt-4 w-full text-white"
             aria-disabled={waitingStatus}
