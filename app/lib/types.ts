@@ -50,3 +50,17 @@ export interface UploadProfilePictureProps {
   onSuccess: () => void;
   onError: (error: string) => void;
 }
+
+export interface TextMemoForm {
+  content: string;
+}
+
+export interface DeleteProfilePictureButtonProps {
+  onDeletePicture: () => void;
+  pictureStatus: string;
+}
+
+export interface PostTextMemoButtonProps {
+  onPost: () => void;
+  waitingStatus: boolean;
+}
