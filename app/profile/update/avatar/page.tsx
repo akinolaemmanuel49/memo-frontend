@@ -25,7 +25,7 @@ export default function UploadProfilePicturePage() {
             </h1>
             <div className="flex justify-end">
                 <Link href="/profile/update">
-                    <Button className="flex mb-4 w-72">
+                    <Button className="flex mb-4 w-72 text-white">
                         <ArrowLeftCircle className="mr-auto h-5 w-5 text-gray-50" /> Go back
                     </Button>
                 </Link>

@@ -11,7 +11,7 @@ export default function UpdateProfilePage() {
             </h1>
             <div className="flex justify-start">
                 <Link href="/profile/update/avatar">
-                    <Button className="flex mb-4 w-72">
+                    <Button className="flex mb-4 w-72 text-white">
                         Upload profile picture<ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
                     </Button>
                 </Link>
