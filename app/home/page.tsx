@@ -6,6 +6,7 @@ export default async function DashboardPage() {
     return (
         <main>
             <Greetings />
+            <MemoContainer />
         </main>
     )
 }
