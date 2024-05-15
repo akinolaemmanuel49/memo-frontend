@@ -1,9 +1,11 @@
+import Greetings from "@/app/ui/cards/greeting";
+import ContentContainer from "@/app/ui/memo/dump";
+import MemoContainer from "../ui/memo/memo-container";
+
 export default async function DashboardPage() {
     return (
         <main>
-            <h1 className='md-4 text-xl md:text-2xl'>
-                Dashboard
-            </h1>
+            <Greetings />
         </main>
     )
 }
