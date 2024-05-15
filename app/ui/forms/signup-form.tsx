@@ -100,7 +100,7 @@ export default function SignupForm() {
                         </div>
                         <div>
                             <label
-                                className="mb-2 mt-2 block text-xs font-medium text-gray-900"
+                                className="mb-2 mt-2 block text-xs font-medium text-gray-900 text-right"
                                 htmlFor="email">
                                 Email
                             </label>
@@ -111,7 +111,7 @@ export default function SignupForm() {
                                     value={formData.email}
                                     onChange={handleInputChange}
                                     placeholder="Email"
-                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-2 text-sm outline-2 placeholder:text-gray-500"
+                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pr-2 text-sm outline-2 placeholder:text-gray-500 text-right"
                                 />
                             </div>
                         </div>
@@ -136,7 +136,7 @@ export default function SignupForm() {
                         </div>
                         <div>
                             <label
-                                className="mb-2 mt-2 block text-xs font-medium text-gray-900"
+                                className="mb-2 mt-2 block text-xs font-medium text-gray-900 text-right"
                                 htmlFor="lastName">
                                 Last Name
                             </label>
@@ -147,7 +147,7 @@ export default function SignupForm() {
                                     value={formData.lastName}
                                     onChange={handleInputChange}
                                     placeholder="Last Name"
-                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-2 text-sm outline-2 placeholder:text-gray-500"
+                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pr-2 text-sm outline-2 placeholder:text-gray-500 text-right"
                                 />
                             </div>
                         </div>
@@ -172,7 +172,7 @@ export default function SignupForm() {
                         </div>
                         <div>
                             <label
-                                className="mb-2 mt-2 block text-xs font-medium text-gray-900"
+                                className="mb-2 mt-2 block text-xs font-medium text-gray-900 text-right"
                                 htmlFor="confirmPassword">
                                 Confirm password
                             </label>
@@ -183,7 +183,7 @@ export default function SignupForm() {
                                     value={confirmPassword}
                                     onChange={handleInputChange}
                                     placeholder="Confirm Password"
-                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pl-2 text-sm outline-2 placeholder:text-gray-500"
+                                    className="peer block w-full rounded-md border border-gray-200 py-[9px] pr-2 text-sm outline-2 placeholder:text-gray-500 text-right"
                                 />
                             </div>
                         </div>
@@ -203,7 +203,7 @@ function SignupButton() {
     const { pending } = useFormStatus();
 
     return (
-        <Button className="mt-4 w-full" aria-disabled={pending}>
+        <Button className="mt-4 w-full text-white" aria-disabled={pending}>
             Sign up <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
     )

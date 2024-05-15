@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { UploadProfilePictureProps } from '@/app/lib/types';
+import { UploadProfilePictureProps, DeleteProfilePictureButtonProps } from '@/app/lib/types';
 import { useFormStatus } from 'react-dom';
 import { Button } from '@/app/ui/button';
 import { ArrowRightCircle } from '@/app/ui/icons';
@@ -28,12 +28,14 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
             const formData = new FormData();
             formData.append('avatarFile', file);
 
-            await axios.put(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-                },
-            });
+            await axios.put(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users`,
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                    },
+                });
             onSuccess();
         } catch (error) {
             onError('Failed to upload profile picture');
@@ -57,9 +59,9 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
     return (
         <form onSubmit={handleSubmit}>
             <div className="mt-4 flex flex-col justify-start items-start min-h-48 bg-white">
-                <div className="w-full md:w-1/2 relative grid grid-cols-1 md:grid-cols-3 border border-gray-300 bg-gray-100 rounded-lg">
+                <div className="w-full md:w-full relative grid grid-cols-1 md:grid-cols-3 border border-gray-300 bg-gray-100 rounded-lg">
                     <div className="rounded-l-lg p-4 bg-gray-200 flex flex-col justify-center items-center border-0 border-r border-gray-300">
-                        <label htmlFor="avatarFile" className="cursor-pointer inline-flex items-center justify-center px-4 py-2 bg-gray-900 text-gray-50 border border-transparent
+                        <label htmlFor="avatarFile" className="cursor-pointer inline-flex items-center justify-center w-48 px-4 py-2 bg-gray-900 text-gray-50 border border-transparent
   rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
   focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
                             Select image
@@ -72,7 +74,7 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
                             />
                         </label>
                         <button
-                            className="inline-flex items-center shadow-md my-2 px-2 py-2 bg-gray-900 text-gray-50 border border-transparent
+                            className="inline-flex items-center justify-center shadow-md w-48 my-2 px-2 py-2 bg-gray-900 text-gray-50 border border-transparent
         rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
        focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
                             onClick={handleRemoveImage}
@@ -121,22 +123,17 @@ function UploadProfilePictureButton() {
     const { pending } = useFormStatus();
 
     return (
-        <Button className="flex justify-center mt-4 w-full md:w-1/2" aria-disabled={pending}>
+        <Button className="flex justify-center mt-4 w-full text-white" aria-disabled={pending}>
             Upload picture <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
     )
-}
-
-interface DeleteProfilePictureButtonProps {
-    onDeletePicture: () => void;
-    pictureStatus: string;
 }
 
 function DeleteProfilePictureButton({ onDeletePicture, pictureStatus }: DeleteProfilePictureButtonProps) {
     const { pending } = useFormStatus();
 
     return (
-        <Button className="flex justify-center mt-4 w-full md:w-1/2 bg-red-600"
+        <Button className="flex justify-center mt-4 w-full text-white bg-red-600"
             aria-disabled={pending}
             onClick={onDeletePicture}>
             {pictureStatus}<ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />

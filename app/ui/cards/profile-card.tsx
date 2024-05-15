@@ -5,18 +5,21 @@ import { ProfileData } from "@/app/lib/types";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function ProfileCard() {
     const [profileData, setProfileData] = useState<ProfileData>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
+    const router = useRouter();
+
     useEffect(() => {
         const fetchData = async () => {
             const accessToken = localStorage.getItem("accessToken");
             if (!accessToken) {
                 setError("Access token not found.");
-                return;
+                router.push("/signin");
             }
             try {
                 const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users`, {
@@ -26,6 +29,7 @@ export default function ProfileCard() {
             } catch (error) {
                 setError("Failed to fetch user profile.");
                 console.error(error);
+                router.push("/signin");
             } finally {
                 setLoading(false);
             }

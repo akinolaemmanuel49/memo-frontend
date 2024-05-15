@@ -35,9 +35,7 @@ export default function ProfileForm() {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
                 setProfileData(response.data);
-                if (profileData) {
-                    setFormData(profileData);
-                }
+                setFormData(response.data);
             } catch (error) {
                 setError("Failed to fetch user profile.");
                 console.error(error);
@@ -209,7 +207,7 @@ function UpdateProfileButton() {
     const { pending } = useFormStatus();
 
     return (
-        <Button className="mt-4 w-full md:w-72" aria-disabled={pending}>
+        <Button className="mt-4 w-full text-white md:w-72" aria-disabled={pending}>
             Update profile <ArrowRightCircle className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
     )
