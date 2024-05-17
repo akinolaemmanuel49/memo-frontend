@@ -46,7 +46,7 @@ export default function Greetings() {
     }
 
     return (
-        <h1 className='md-4 text-xl md:text-2xl'>
+        <h1 className='md-4 text-xl md:text-2xl mb-4'>
             Hi, {profileData?.username}
         </h1>
 

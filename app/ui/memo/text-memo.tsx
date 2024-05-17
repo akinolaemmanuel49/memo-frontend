@@ -50,7 +50,7 @@ export default function TextMemo() {
             <div className="w-full">
                 <textarea
                     name="content"
-                    className="w-full h-full p-4 border border-gray-600 rounded-lg rounded-tl-none focus:outline-none focus:ring focus:border-blue-500"
+                    className="w-full h-full mb-2 p-4 border border-gray-600 rounded-lg rounded-tl-none focus:outline-none focus:ring focus:border-blue-500"
                     value={formData.content}
                     onChange={handleInputChange}
                     rows={4}

@@ -1,10 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import TextMemo from "./text-memo";
-import { Button } from "../button";
+import { Button } from "@/app/ui/button";
+import TextMemo from "@/app/ui/memo/text-memo";
 import ImageMemo from "@/app/ui/memo/image-memo";
 import AudioMemo from "@/app/ui/memo/audio-memo";
+import VideoMemo from "@/app/ui/memo/video-memo";
 
 export default function MemoContainer() {
     const [contentType, setContentType] = useState<"text" | "image" | "audio" | "video">("text");
@@ -18,7 +19,7 @@ export default function MemoContainer() {
             case "audio":
                 return <AudioMemo />
             case "video":
-                return
+                return <VideoMemo />
             default:
                 return null;
         }
