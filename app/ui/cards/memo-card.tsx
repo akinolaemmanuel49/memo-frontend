@@ -23,7 +23,7 @@ export default function MemoCard({ memo }: { memo: Memo }) {
                 <p className="text-gray-800">{memo.content}</p>
             )}
             {memo.memo_type === "image" && (
-                <div className="w-full h-96">
+                <div className="w-full">
                     <p className="text-lg font-bold mb-2">{memo.caption}</p>
                     <img
                         src={memo.content}
