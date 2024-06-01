@@ -69,3 +69,13 @@ export interface ImageMemoForm {
   caption: string;
   memoFile: File | null;
 }
+
+export interface Memo {
+  id: string;
+  memo_type: "text" | "image" | "audio" | "video";
+  content: string;
+  caption: string;
+  created_at: string;
+  updated_at: string;
+  owner_id: string;
+}

@@ -27,13 +27,14 @@ const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({ onSucce
         try {
             const formData = new FormData();
             formData.append('avatarFile', file);
+            const accessToken = localStorage.getItem('accessToken');
 
             await axios.put(`${process.env.NEXT_PUBLIC_API_BASE_URL}/users`,
                 formData,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+                        Authorization: `Bearer ${accessToken}`,
                     },
                 });
             onSuccess();

@@ -55,7 +55,7 @@ export default function SigninForm() {
             console.log("Form submitted: ", response);
             router.push("/home");
         } catch (error) {
-            console.error("Signup failed: ", error);
+            console.error("Signin failed: ", error);
         }
     };
 
