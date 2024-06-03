@@ -32,6 +32,8 @@ export default function MemoCard({ memo }: { memo: Memo }) {
         <div className="w-full">
           <p className="text-lg font-bold mb-2">{memo.caption}</p>
           <Image
+            height={240}
+            width={320}
             src={memo.content}
             alt={memo.caption}
             className="rounded-lg object-cover w-full h-full"
