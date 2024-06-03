@@ -3,8 +3,8 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
 
-import { ArrowRightCircle } from "@/Components/Icons";
-import { Button } from "@/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
+import { Button } from "@/app/Components/Button";
 import { PostMemoButtonProps } from "@/Lib/Types";
 
 export default function VideoMemo() {

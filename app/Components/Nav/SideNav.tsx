@@ -2,9 +2,9 @@ import Link from "next/link";
 import { clsx } from "clsx";
 // import { signOut } from '@/auth';
 
-import NavLinks from "@/Components/Nav/NavLinks";
-import MemoLogo from "@/Components/MemoLogo";
-import { Power, Settings } from "@/Components/Icons";
+import NavLinks from "@/app/Components/Nav/NavLinks";
+import MemoLogo from "@/app/Components/MemoLogo";
+import { Power, Settings } from "@/app/Components/Icons";
 
 export default function SideNav() {
   return (

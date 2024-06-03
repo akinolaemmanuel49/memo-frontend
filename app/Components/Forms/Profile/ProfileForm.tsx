@@ -6,8 +6,8 @@ import axios from "axios";
 import { ProfileFormData as FormData, ProfileData } from "@/Lib/Types";
 import { useRouter } from "next/navigation";
 import { useFormStatus } from "react-dom";
-import { ArrowRightCircle } from "@/Components/Icons";
-import { Button } from "@/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
+import { Button } from "@/app/Components/Button";
 
 export default function ProfileForm() {
   const [formData, setFormData] = useState<FormData>({

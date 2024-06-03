@@ -1,6 +1,6 @@
 "use client";
 
-import ProfileCard from "@/Components/Cards/ProfileCard";
+import ProfileCard from "@/app/Components/Cards/ProfileCard";
 
 export default function ProfilePage() {
   return (

@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-import { Button } from "@/Components/Button";
-import ProfileForm from "@/Components/Forms/Profile/ProfileForm";
-import { ArrowRightCircle } from "@/Components/Icons";
+import { Button } from "@/app/Components/Button";
+import ProfileForm from "@/app/Components/Forms/Profile/ProfileForm";
+import { ArrowRightCircle } from "@/app/Components/Icons";
 
 export default function UpdateProfilePage() {
   return (

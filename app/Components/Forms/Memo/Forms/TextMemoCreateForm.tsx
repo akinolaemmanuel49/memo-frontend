@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { TextMemoForm as FormData, PostMemoButtonProps } from "@/Lib/Types";
-import { Button } from "@/Components/Button";
+import { Button } from "@/app/Components/Button";
 
 export default function TextMemo() {
   const [formData, setFormData] = useState<FormData>({

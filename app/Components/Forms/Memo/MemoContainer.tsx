@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/Components/Button";
-import TextMemo from "@/Components/Forms/Memo/Forms/TextMemoCreateForm";
-import ImageMemo from "@/Components/Forms/Memo/Forms/ImageMemoCreateForm";
-import AudioMemo from "@/Components/Forms/Memo/Forms/AudioMemoCreateForm";
-import VideoMemo from "@/Components/Forms/Memo/Forms/VideoMemoCreateForm";
-import { AudioIcon, ImageIcon, TextIcon, VideoIcon } from "@/Components/Icons";
+import { Button } from "@/app/Components/Button";
+import TextMemo from "@/app/Components/Forms/Memo/Forms/TextMemoCreateForm";
+import ImageMemo from "@/app/Components/Forms/Memo/Forms/ImageMemoCreateForm";
+import AudioMemo from "@/app/Components/Forms/Memo/Forms/AudioMemoCreateForm";
+import VideoMemo from "@/app/Components/Forms/Memo/Forms/VideoMemoCreateForm";
+import { AudioIcon, ImageIcon, TextIcon, VideoIcon } from "@/app/Components/Icons";
 
 export default function MemoContainer() {
   const [contentType, setContentType] = useState<

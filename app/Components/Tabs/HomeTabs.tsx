@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-import AllMemosList from "@/Components/Lists/AllMemosList";
-import FollowingMemosList from "@/Components/Lists/FollowingMemosList";
-import MemoContainer from "@/Components/Forms/Memo/MemoContainer";
+import AllMemosList from "@/app/Components/Lists/AllMemosList";
+import FollowingMemosList from "@/app/Components/Lists/FollowingMemosList";
+import MemoContainer from "@/app/Components/Forms/Memo/MemoContainer";
 
 const HomeTabs = () => {
   const [activeTab, setActiveTab] = useState<"all" | "following">("all");

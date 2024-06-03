@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import MemoLogo from "@/Components/MemoLogo";
+import MemoLogo from "@/app/Components/MemoLogo";
 
 export default function LandingPage() {
   return (

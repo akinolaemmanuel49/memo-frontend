@@ -7,8 +7,8 @@ import { useFormStatus } from "react-dom";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import { Button } from "@/Components/Button";
-import { ArrowRightCircle } from "@/Components/Icons";
+import { Button } from "@/app/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
 import { CreateUserFormData as FormData, AuthDataResponse } from "@/Lib/Types";
 
 export default function SignupForm() {

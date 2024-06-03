@@ -1,12 +1,14 @@
 import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useFormStatus } from "react-dom";
 
-import { Button } from "@/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
+import { Button } from "@/app/Components/Button";
 import { PostMemoButtonProps } from "@/Lib/Types";
 
-export default function AudioMemo() {
-  const [audio, setAudio] = useState<File | null>(null);
+export default function ImageMemo() {
+  const [image, setImage] = useState<File | null>(null);
   const [caption, setCaption] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const [waiting, setWaiting] = useState(false);
@@ -19,11 +21,11 @@ export default function AudioMemo() {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const uploadedFile = e.target.files?.[0];
     if (uploadedFile) {
-      setAudio(uploadedFile);
+      setImage(uploadedFile);
     }
   };
 
-  const handleCreateAudioMemo = async () => {
+  const handleCreateImageMemo = async () => {
     setWaiting(true);
     const accessToken = localStorage.getItem("accessToken");
     if (!accessToken) {
@@ -32,7 +34,7 @@ export default function AudioMemo() {
       setWaiting(false);
       return;
     }
-    if (!audio) {
+    if (!image) {
       setError("Image required for image memos.");
       setWaiting(false);
       return;
@@ -41,10 +43,10 @@ export default function AudioMemo() {
     try {
       const formData = new FormData();
       formData.append("caption", caption);
-      formData.append("memoFile", audio);
+      formData.append("memoFile", image);
 
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/memo/audio`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/memo/image`,
         formData,
         {
           headers: {
@@ -69,7 +71,7 @@ export default function AudioMemo() {
           value={caption}
           onChange={handleInputChange}
           rows={2}
-          placeholder="What's this audio about?"
+          placeholder="What's this image about?"
         />
       </div>
       <div className="mb-6">
@@ -79,10 +81,10 @@ export default function AudioMemo() {
   rounded-md font-semibold text-xs uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none 
   focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150"
         >
-          Select audio
+          Select image
           <input
             id="memoFile"
-            accept="audio/*"
+            accept="image/*"
             className="hidden"
             type="file"
             onChange={handleFileChange}
@@ -91,8 +93,8 @@ export default function AudioMemo() {
       </div>
       <div className="flex flex-col w-full">
         {error && <p className="text-red-500">{error}</p>}
-        <PostAudioMemoButton
-          onPost={handleCreateAudioMemo}
+        <PostImageMemoButton
+          onPost={handleCreateImageMemo}
           waitingStatus={waiting}
         />
       </div>
@@ -100,7 +102,7 @@ export default function AudioMemo() {
   );
 }
 
-function PostAudioMemoButton({ onPost, waitingStatus }: PostMemoButtonProps) {
+function PostImageMemoButton({ onPost, waitingStatus }: PostMemoButtonProps) {
   return (
     <Button
       className="flex justify-center mt-4 w-full text-white"

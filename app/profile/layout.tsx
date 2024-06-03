@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import SideNav from "@/Components/Nav/SideNav";
+import SideNav from "@/app/Components/Nav/SideNav";
 
 export const metadata: Metadata = {
   title: "Profile",

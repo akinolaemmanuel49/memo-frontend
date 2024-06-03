@@ -2,9 +2,9 @@
 
 import { useState } from "react";
 
-import FindMemosList from "@/Components/Lists/FindMemosList";
-import FindPeopleList from "@/Components/Lists/FindPeopleList";
-import FindFollowingList from "@/Components/Lists/FindFollowingList";
+import FindMemosList from "@/app/Components/Lists/FindMemosList";
+import FindPeopleList from "@/app/Components/Lists/FindPeopleList";
+import FindFollowingList from "@/app/Components/Lists/FindFollowingList";
 
 const ExplorerTabs = () => {
   const [activeTab, setActiveTab] = useState<"memos" | "people" | "following">(

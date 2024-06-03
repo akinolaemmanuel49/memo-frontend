@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { Home, Explore, Profile, Settings } from "@/Components/Icons";
+import { Home, Explore, Profile, Settings } from "@/app/Components/Icons";
 
 const links = [
   {

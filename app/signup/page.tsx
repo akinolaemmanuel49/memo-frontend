@@ -1,5 +1,5 @@
-import SignupForm from "@/Components/Forms/Auth/SignupForm";
-import MemoLogo from "@/Components/MemoLogo";
+import SignupForm from "@/app/Components/Forms/Auth/SignupForm";
+import MemoLogo from "@/app/Components/MemoLogo";
 
 export default function SignupPage() {
   return (

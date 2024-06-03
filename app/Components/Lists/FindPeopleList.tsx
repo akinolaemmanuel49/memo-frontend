@@ -1,4 +1,4 @@
-import SearchBar from "@/Components/Forms/SearchBar";
+import SearchBar from "@/app/Components/Forms/SearchBar";
 
 function FindPeopleList() {
   return <SearchBar />;

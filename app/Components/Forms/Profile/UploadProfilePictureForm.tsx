@@ -5,8 +5,8 @@ import {
   DeleteProfilePictureButtonProps,
 } from "@/Lib/Types";
 import { useFormStatus } from "react-dom";
-import { Button } from "@/Components/Button";
-import { ArrowRightCircle } from "@/Components/Icons";
+import { Button } from "@/app/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
 
 const UploadProfilePictureForm: React.FC<UploadProfilePictureProps> = ({
   onSuccess,

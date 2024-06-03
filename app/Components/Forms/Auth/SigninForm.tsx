@@ -7,8 +7,8 @@ import { useFormStatus } from "react-dom";
 import Link from "next/link";
 
 import { AuthCredentials as FormData, AuthDataResponse } from "@/Lib/Types";
-import { Button } from "@/Components/Button";
-import { ArrowRightCircle } from "@/Components/Icons";
+import { Button } from "@/app/Components/Button";
+import { ArrowRightCircle } from "@/app/Components/Icons";
 import { useRouter } from "next/navigation";
 
 export default function SigninForm() {

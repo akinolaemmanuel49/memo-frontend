@@ -1,13 +1,12 @@
 "use client";
 
+import { Memo } from "@/Lib/Types";
+import MemoCard from "@/app/Components/Cards/MemoCard";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Memo } from "@/Lib/Types";
-import MemoCard from "@/Components/Cards/MemoCard";
-
-export default function FollowingMemosList() {
+export default function AllMemosList() {
   const [memos, setMemos] = useState<Memo[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -26,7 +25,7 @@ export default function FollowingMemosList() {
     }
     try {
       const response = await axios.get<Memo[]>(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/memo/feed?page=${pageNumber}&pageSize=5`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/memo/all?page=${pageNumber}&pageSize=5`,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
         }

@@ -1,4 +1,4 @@
-import { Bookmark } from "@/Components/Icons"
+import { Bookmark } from "@/app/Components/Icons"
 
 export default function MemoLogo() {
   return (

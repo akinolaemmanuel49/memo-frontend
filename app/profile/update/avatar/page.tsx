@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 
-import UploadProfilePictureForm from "@/Components/Forms/Profile/UploadProfilePictureForm";
-import { Button } from "@/Components/Button";
-import { ArrowLeftCircle } from "@/Components/Icons";
+import UploadProfilePictureForm from "@/app/Components/Forms/Profile/UploadProfilePictureForm";
+import { Button } from "@/app/Components/Button";
+import { ArrowLeftCircle } from "@/app/Components/Icons";
 
 export default function UploadProfilePicturePage() {
   const router = useRouter();
