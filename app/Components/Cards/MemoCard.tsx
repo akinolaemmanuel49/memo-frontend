@@ -26,7 +26,7 @@ export default function MemoCard({ memo }: { memo: Memo }) {
   return (
     <div className="border rounded-lg p-4 shadow-md space-y-2">
       {memo.memo_type === "text" && (
-        <p className="text-gray-800">{memo.content}</p>
+        <p className="text-gray-800 text-lg font-bold mb-2">{memo.content}</p>
       )}
       {memo.memo_type === "image" && (
         <div className="w-full">
