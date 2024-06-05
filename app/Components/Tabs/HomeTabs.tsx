@@ -5,6 +5,7 @@ import { useState } from "react";
 import AllMemosList from "@/app/Components/Lists/AllMemosList";
 import FollowingMemosList from "@/app/Components/Lists/FollowingMemosList";
 import MemoContainer from "@/app/Components/Forms/Memo/MemoContainer";
+import Memo from "../Forms/Memo/Forms/MemoCreateForm";
 
 const HomeTabs = () => {
   const [activeTab, setActiveTab] = useState<"all" | "following">("all");
@@ -38,9 +39,9 @@ const HomeTabs = () => {
         </button>
       </div>
       <div className="mt-4 w-full">
-        <MemoContainer />
+        <Memo />
       </div>
-      <div className="mt-4 w-full">
+      <div className="w-full">
         {activeTab === "all" && <AllMemosList />}
         {activeTab === "following" && <FollowingMemosList />}
       </div>
