@@ -52,14 +52,13 @@ export default function ProfileCard() {
 
   return (
     <div className="flex flex-col text-xl">
-      <div className="flex flex-row gap-4 mt-4 w-full justify-center md:justify-start">
-        <div className="w-64 md:w-full">
+      <div className="flex flex-row gap-4 mt-4 w-full justify-center md:justify-start items-center">
+        <div className="flex justify-center w-64 md:w-full md:justify-start">
           <Image
             src={profileData?.avatarURL || "/avatar/default.jpeg"}
             alt="Profile"
-            width={80}
-            height={80}
-            className="rounded-full"
+            width={200}
+            height={100}
           />
         </div>
         <div className="mt-[60px] w-64 md:w-full">

@@ -49,8 +49,9 @@ export default function Greetings() {
   }
 
   return (
-    <h1 className="md-4 text-xl md:text-2xl mb-4">
-      Hi, {profileData?.username}
+    <h1 className="text-black text-wrap text-[50px] font-bold p-4">
+      Welcome back, 
+      <span className="text-white bg-black p-2">{profileData?.username}</span>
     </h1>
   );
 }

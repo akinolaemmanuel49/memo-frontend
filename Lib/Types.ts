@@ -79,3 +79,8 @@ export interface Memo {
   updated_at: string;
   owner_id: string;
 }
+
+export interface SearchBarProps {
+  apiEndpoint: string;
+  resultType: "memo" | "user";
+}

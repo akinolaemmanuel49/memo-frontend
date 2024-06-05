@@ -1,16 +1,50 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
-function SearchBar() {
+import { SearchBarProps } from "@/Lib/Types";
+
+function SearchBar({ apiEndpoint, resultType }: SearchBarProps) {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState<any[]>([]);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current); // Clear any existing timeout
+    }
+
+    timeoutRef.current = setTimeout(async () => {
+      if (!searchQuery) return; // Handle empty search
+
+      try {
+        const response = await fetch(
+          `${apiEndpoint}&searchString=${searchQuery}`
+        );
+        const data = await response.json();
+        setSearchResults(data.results || []); // Assuming results data structure
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        // Handle errors gracefully (e.g., display an error message)
+      }
+    }, 500); // Adjust delay as needed (in milliseconds)
   };
 
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSearchSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Searching for:", searchQuery);
-    // Implement search functionality here
+
+    if (!searchQuery) return; // Handle empty search
+
+    try {
+      const response = await fetch(
+        `${apiEndpoint}&searchString=${searchQuery}`
+      );
+      const data = await response.json();
+      setSearchResults(data.results || []); // Assuming results data structure
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      // Handle errors gracefully (e.g., display an error message)
+    }
   };
 
   return (
@@ -35,7 +69,18 @@ function SearchBar() {
       </form>
       <div>
         {/* Results will be displayed here */}
-        Results are displayed here.
+        {searchResults.length > 0 ? (
+          <ul>
+            {searchResults.map((result) => (
+              <li key={result.id || result.someUniqueIdentifier}>
+                {/* Display search result information here */}
+                {result.name || result.username}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No results found.</p>
+        )}
       </div>
     </div>
   );

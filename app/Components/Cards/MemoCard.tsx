@@ -1,10 +1,40 @@
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+import axios from "axios";
 
-import { Memo } from "@/Lib/Types";
+import { Memo, ProfileData } from "@/Lib/Types";
+import { useRouter } from "next/navigation";
+import SocialMenu from "../Social/SocialMenu";
 
 export default function MemoCard({ memo }: { memo: Memo }) {
   const mediaRef = useRef<HTMLVideoElement | HTMLAudioElement>(null);
+  const [userData, setUserData] = useState<ProfileData | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      if (!accessToken) {
+        setError("Access token not found.");
+        router.push("/signin");
+      }
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/users/${memo.owner_id}`,
+          {
+            headers: { Authorization: `Bearer ${accessToken}` },
+          }
+        );
+        setUserData(response.data);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching username:", error);
+      }
+    };
+
+    fetchData();
+  }, [memo.owner_id, router]);
 
   const handlePlay = (
     ref: React.RefObject<HTMLVideoElement | HTMLAudioElement>
@@ -25,18 +55,35 @@ export default function MemoCard({ memo }: { memo: Memo }) {
 
   return (
     <div className="border rounded-lg p-4 shadow-md space-y-2">
+      {userData?.username && (
+        <>
+          <div className="flex flex-row gap-x-2">
+            <Image
+              height={48}
+              width={48}
+              alt={`${userData.username} profile picture`}
+              className="rounded-full w-8 h-8"
+              src={userData.avatarURL}
+            />
+            <p className="text-gray-800 text-lg font-bold mb-2">
+              @{userData.username}
+            </p>
+          </div>
+          <hr />
+        </>
+      )}
       {memo.memo_type === "text" && (
         <p className="text-gray-800 text-lg font-bold mb-2">{memo.content}</p>
       )}
       {memo.memo_type === "image" && (
-        <div className="w-full">
+        <div className="w-full h-full">
           <p className="text-lg font-bold mb-2">{memo.caption}</p>
           <Image
-            height={240}
-            width={320}
+            width={914}
+            height={600}
             src={memo.content}
             alt={memo.caption}
-            className="rounded-lg object-cover w-full h-full"
+            className="rounded-lg object-fill"
           />
         </div>
       )}
@@ -68,6 +115,7 @@ export default function MemoCard({ memo }: { memo: Memo }) {
           />
         </div>
       )}
+      <SocialMenu />
     </div>
   );
 }

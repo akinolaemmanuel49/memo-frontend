@@ -40,7 +40,7 @@ const HomeTabs = () => {
       <div className="mt-4 w-full">
         <MemoContainer />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 w-full">
         {activeTab === "all" && <AllMemosList />}
         {activeTab === "following" && <FollowingMemosList />}
       </div>
